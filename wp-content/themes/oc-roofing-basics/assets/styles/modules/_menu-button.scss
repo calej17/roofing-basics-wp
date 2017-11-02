@@ -1,0 +1,67 @@
+$menu-line-height: 2px;
+$menu-line-width: 1.2em;
+$menu-pseudo-offset: $menu-line-height * 2;
+
+a.menu-button {
+  @include animate;
+  @include better-box(none);
+  background-color: transparent;
+  cursor: pointer;
+  left: 5%;
+  padding: 0.8em 0;
+  position: absolute;
+  z-index: 9;
+
+  // Primary Mobile - Tablet & Below
+  @media screen and (max-width: $tablet) {
+    display: inline-block;
+  } // End Tablet & Below
+
+  .lines {
+    @include better-box(block);
+    background-color: $foreground;
+    height: $menu-line-height;
+    width: $menu-line-width;
+
+    &, &:before, &:after {
+      @include animate;
+      border-radius: 1px;
+    }
+
+    &:before, &:after {
+      background-color: $foreground;
+      content: '';
+      display: inline-block;
+      height: $menu-line-height;
+      left: 0;
+      position: absolute;
+      width: $menu-line-width;
+    }
+
+    &:before {
+      top: $menu-pseudo-offset;
+    }
+
+    &:after {
+      top: -$menu-pseudo-offset;
+    }
+  } // END .lines
+
+  &.open {
+    .lines {
+      background-color: rgba(0,0,0, 0);
+
+      &:before, &:after {
+        top: 0;
+      }
+
+      &:before {
+        @include browser-prefix(transform, rotate(45deg));
+      }
+
+      &:after {
+        @include browser-prefix(transform, rotate(-45deg));
+      }
+    } // END .lines
+  } // END .menu-button.open
+} // END .menu-button

@@ -1,0 +1,14 @@
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+.page-break-before {
+  margin-top: 1in;
+  page-break-before: always;
+}
+
+.print {
+  background: $white;
+}

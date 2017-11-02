@@ -1,0 +1,245 @@
+@mixin disabled {
+  opacity: 0.3;
+}
+
+@mixin label {
+  @include full-box;
+  color: rgba($type, 0.6);
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  line-height: 160%;
+  margin-bottom: $micro-space;
+  text-transform: uppercase;
+} // End label mixin
+
+@mixin form-element {
+  @include browser-prefix(appearance, none);
+  background-color: $foreground;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  display: inline-block;
+  color: $type;
+  font-family: $font;
+  font-size: 1em;
+  line-height: 140%;
+  margin-bottom: $half-space;
+  padding: 0.875em 1.250em;
+  width: 100%;
+
+  &:focus {
+    background-color: $foreground;
+  }
+} // End form-element mixin
+
+// Pseudo Box for Checkboxes and Radio Buttons
+@mixin pseudo-box($border-radius: 10em) {
+  display: none;
+
+  & + label {
+    font-size: 1em;
+    color: $type;
+    letter-spacing: normal;
+    line-height: 1.4;
+    margin-right: $half-space;
+    padding-left: 2em;
+    text-transform: none;
+    width: auto;
+
+    &:before {
+      background-color: $foreground;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      box-sizing: border-box;
+      content: "";
+      display: inline-block;
+      height: 1.35em;
+      left: 0;
+      position: absolute;
+      width: 1.35em;
+    }
+  } // End & + label
+
+  &:checked + label:before {
+    border: 0.45em solid $callout;
+  }
+}
+
+@mixin button($color: $callout, $type-color: $foreground) {
+  @include cta($color, $type-color);
+  @include browser-prefix(appearance, none);
+
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone) {
+    @include full-box;
+  } // End Phone & Below
+}
+
+button {
+  @include button(lighten($callout, 15%), $foreground);
+}
+
+label, .label {
+  @include label;
+}
+
+label {
+  a {
+    color: $callout;
+    float: right;
+  }
+} // End label
+
+input {
+  &:disabled {
+    @include disabled;
+  }
+
+  &[type="date"],
+  &[type="text"],
+  &[type="tel"],
+  &[type="email"],
+  &[type="password"],
+  &[type="number"],
+  &[type="search"] {
+    @include form-element;
+  }
+
+  &[type="checkbox"] {
+    @include pseudo-box($border-radius);
+
+    &:checked + label {
+      &:before {
+        background-image: asset-url("check.svg");
+        background-color: $callout;
+        background-repeat: no-repeat;
+        background-position: center 0.05em;
+        border-width: 0.35em;
+      }
+    }
+  } // End &[type="radio"]
+
+  &[type="radio"] {
+    @include pseudo-box;
+  } // End &[type="radio"]
+
+  &[type="search"] {
+    padding-left: 2.5em;
+    position: relative;
+
+    &.search-alt {
+      background-color: rgba($foreground, 0);
+      border-color: $border-color;
+
+      &:focus {
+        background-color: $foreground;
+      }
+    }
+  } // End &[type="search"]
+
+  &[type="file"] {
+    @include browser-prefix(appearance, none);
+    font-size: 1em;
+    margin-bottom: $minor-space;
+  } // End &[type="file"]
+
+  &[type="submit"] {
+    @include button;
+  } // End &[type="submit"]
+
+  + .note {
+    font-size: 0.8em;
+    margin-top: -$nano-space;
+  }
+} // End input
+
+select {
+  @include form-element;
+  background-image: asset-url("arrow-down.svg");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 1.6em;
+
+  &:disabled {
+    @include disabled;
+  }
+} // End select
+
+.radio-container, .checkbox-container {
+  > label {
+    @include no-select;
+    cursor: pointer;
+    margin: $micro-space;
+    margin-left: 0;
+  }
+
+  &.text {
+    @include full-box;
+
+    label {
+      float: left;
+      margin-right: 0;
+      min-height: 1.4em;
+    }
+
+    input {
+      &[type="text"],
+      &[type="number"] {
+        @include better-box;
+        float: left;
+        width: 80%;
+      }
+    } // End input
+  } // End .text
+} // End .radio-container
+
+.input-container {
+  @include full-box;
+  clear: none;
+  margin-bottom: $half-space;
+
+  &-half {
+    @include better-box;
+    float: left;
+    width: 50%;
+
+    select {
+      padding-right: 2.75em;
+    }
+
+    > .radio-container {
+      margin-bottom: $half-space;
+
+      > label {
+        margin-bottom: 0.95rem;
+        margin-top: 0.95rem;
+
+        // Primary Mobile - Tablet & Below
+        @media screen and (max-width: $tablet) {
+          margin-bottom: 0.89rem;
+          margin-top: 0.89rem;
+        } // End Tablet & Below
+      }
+    }
+
+    &:nth-of-type(odd) {
+      clear: left;
+      padding-right: 2.5%;
+    }
+
+    &:nth-of-type(even) {
+      padding-left: 2.5%;
+    }
+  }
+
+  &.error {
+    label {
+      color: $error;
+    }
+
+    input, select {
+      &.error {
+        border-color: $error;
+      }
+    } // End input, select
+  } // End &.error
+} // End .input-container

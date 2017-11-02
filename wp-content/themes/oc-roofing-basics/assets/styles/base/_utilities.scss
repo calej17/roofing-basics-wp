@@ -1,0 +1,93 @@
+// Global
+// Browser Prefix
+@mixin browser-prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -khtml-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+// Better Box
+@mixin better-box($display: inline-block) {
+  display: $display;
+  position: relative;
+}
+
+// Full Box
+@mixin full-box($display: inline-block) {
+  @include better-box($display);
+  clear: both;
+  float: none;
+  width: 100%;
+} // End Full Box
+
+.full-box {
+  @include full-box;
+}
+
+@mixin centering-base($translate: translate(-50%, -50%)) {
+  @include browser-prefix(transform, $translate);
+  position: absolute;
+}
+
+// Absolute Center
+@mixin absolute-center {
+  @include centering-base;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+}
+
+// Horizontal Center
+@mixin horizontal-center {
+  @include centering-base(translate(-50%, 0));
+  left: 50%;
+  margin-right: -50%;
+}
+
+// Vertical Center
+@mixin vertical-center {
+  @include centering-base(translate(0, -50%));
+  top: 50%;
+}
+
+// Hide
+%hide, .hide {
+  display: none;
+}
+
+// Cloak
+%cloak, .cloak {
+  opacity: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+// No Select
+@mixin no-select {
+  @include browser-prefix(user-select, none);
+  @include browser-prefix(touch-callout, none);
+}
+
+// Effects
+// Animate
+@mixin animate($element: all, $time: $animate-time, $effect: ease-in-out) {
+  @include browser-prefix(transition, $element $time $effect);
+}
+
+// No Tap Effect
+@mixin no-tap {
+  @include browser-prefix(tap-highlight-color, transparent);
+}

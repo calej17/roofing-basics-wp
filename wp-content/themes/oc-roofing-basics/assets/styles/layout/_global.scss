@@ -1,0 +1,74 @@
+html, body {
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: $background;
+  color: $type;
+  font-family: $font-stack;
+  font-size: $base;
+
+  // Primary Mobile - Tablet & Below
+  @media screen and (max-width: $tablet){
+    font-size: $tablet-base;
+  } // End Tablet & Below
+
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone){
+    font-size: $phone-base;
+  } // End Phone & Below
+} // End body
+
+// Section
+@mixin section {
+  @include full-box;
+  background-color: $foreground;
+  padding: $double-space 0;
+}
+
+section {
+  @include section;
+}
+
+p {
+  font-family: $font-light;
+  font-size: 1.188em;
+  line-height: 160%;
+  margin-bottom: $minor-space;
+} // End p
+
+.note {
+  font-size: 0.875em;
+}
+
+strong {
+  font-family: $font-medium;
+
+  em {
+    font-family: $font-bold-italic;
+  }
+}
+
+em {
+  font-family: $font-italic;
+
+  strong {
+    font-family: $font-bold-italic;
+  }
+}
+
+hr {
+  @include full-box(table);
+  background-color: $border-color;
+  height: 1px;
+  margin-bottom: $space;
+}
+
+a {
+  color: $callout;
+
+  &:hover {
+    color: $callout-hover;
+  }
+}

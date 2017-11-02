@@ -1,0 +1,31 @@
+h1, h2, h3, h4, h5 {
+  @include full-box;
+  color: $background;
+  line-height: 140%;
+}
+
+h1 {
+  font-family: $font-light;
+  font-size: 3em;
+  margin-bottom: $space;
+
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone) {
+    font-size: 2.4em;
+  } // End Phone & Below
+}
+
+h2 {
+  font-size: 1.875em;
+  margin-bottom: $space;
+}
+
+h3, h4 {
+  font-size: 1.1875em;
+  margin-bottom: $minor-space;
+}
+
+h4 {
+  color: $type;
+  line-height: 120%;
+}

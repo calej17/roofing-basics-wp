@@ -1,0 +1,20 @@
+// Modbox
+$modulus: 1.4%;
+
+@mixin mw {
+  @include better-box;
+  clear: both;
+  margin: 0 -$modulus;
+  width: 100% + ($modulus * 2);
+}
+
+@mixin mb {
+  @include better-box;
+  float: left;
+  margin: $modulus;
+}
+
+@mixin modbox($width) {
+  @include mb;
+  width: $width - ($modulus * 2);
+}

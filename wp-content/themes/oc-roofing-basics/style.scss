@@ -1,0 +1,155 @@
+//                                                            ••••••••••••••
+//                                                         ••••••••••••••••••••
+//            handcrafted•••••                           •••••             ••••••
+//        •with•love•&•care•by•           ••••         •••••                  •••••
+//     J•T••••           •••••          ••••          ••••                     •••••
+//   C•J••              •••••          ••••          ••••                       •••••
+//  JJC•               •••••          ••••          ••••                        •••••
+// CME•               •••••          ••••          ••••                         ••••
+//  GSR•             •••••          ••••          ••••
+//   NRT•••         •••••          ••••          ••••
+//     CJS••       •••••          ••••          ••••
+//       JMS      •••••          ••••          ••••
+//                ••••          ••••          ••••
+//               ••••          •••••         ••••
+//               ••••        •••••••        ••••
+//               •••••    •••2015••••     •••••
+//                •Whitelabel•   •wlabel.co••
+//                  •••••••       ••••••••
+
+//0.0 BASE
+//  0.1 Variables
+//  0.2 Generics, Utilities, & Consolidations
+//  0.3 Resets
+//  0.4 Webfonts
+
+//1.0 LAYOUT
+//  1.1 Header Structure
+//  1.2 Footer Structure
+//  1.3 Headings
+//  1.4 Forms
+//  1.5 Lists
+//  1.6 Pagination
+
+//2.0 MODULES
+//  2.# Page Specific
+
+//3.0 RESPONSIVE
+//  3.1 Only Computer - No tablet or below
+//  3.2 Only Tablet & Above - No Mobile Phone
+//  3.3 Primary Mobile - Tablet & Below
+//  3.4 Secondary Mobile - Phone & Below
+//  3.5 iPad Only
+//  3.6 iPhone Only
+
+//4.0 Themes
+//  4.# If Applicable
+
+// 0.0 BASE
+// ----------------------------------------------------------------------------------------------------
+
+// 0.1 Variables
+
+// Responsive
+$large-screen: 1280px;
+$tablet: 1024px;
+$big-phone: 840px;
+$phone: 680px;
+
+// Color
+$background: #0D1B35; // Primary background color
+$border-color: #E0F1F3;
+$brand: #489ED2;
+$callout: #6fCEC1;
+$callout-hover:  lighten($callout, 10%);
+$default: #000000;
+$error: #C46A5E;
+$error-hover: lighten($error, 2.5%);
+$link: #4a638b;
+$type: #5B626E;
+$type-alt: #C1C3C8;
+$foreground: #FFFFFF;
+$shadow: rgba($background, 0.1);
+
+// Space
+$base: 16px;
+$tablet-base: 15px;
+$phone-base: 15px;
+
+$space: 2rem;
+$half-space: $space / 2;
+$double-space: $space * 2;
+$minor-space: 1.250rem;
+$double-minor-space: $minor-space * 2;
+$micro-space: 0.750rem;
+$nano-space: $micro-space / 2;
+
+// Fonts
+$font: "";
+$font-italic: "";
+$font-light: "";
+$font-medium: "";
+$font-bold: "";
+$font-bold-italic: "";
+$font-stack: $font, $font-light, $font-medium;
+
+// Misc
+$animate-time: 0.2s;
+$border-radius: 0.250em;
+
+// Base Imports
+@import "base/utilities";
+@import "base/resets";
+@import "base/generics";
+@import "base/modbox";
+@import "base/fonts";
+
+// 1.0 LAYOUT - Global Structure
+// ----------------------------------------------------------------------------------------------------
+@import "layout/global";
+@import "layout/content";
+
+// Header Structure
+@import "layout/header";
+@import "modules/logo";
+@import "modules/menu-button";
+@import "layout/flash";
+
+// Footer Structure
+@import "layout/footer";
+
+// Headings
+@import "layout/headings";
+
+// Forms
+@import "layout/forms";
+
+// 2.0 MODULES - Page Specific
+// ----------------------------------------------------------------------------------------------------
+
+// Override Utilities
+@import "base/override-utilities";
+
+// Print
+// @import "base/print";
+
+// 3.0 RESPONSIVE
+// ----------------------------------------------------------------------------------------------------
+
+// Only Computer - No tablet or below
+// @media screen and (min-width: $tablet) {} // End Only Computer
+
+// Only Tablet & Above - No Mobile Phone
+// @media screen and (min-width: $phone) {} // End Tablet & Above
+
+// Primary Mobile - Tablet & Below
+// @media screen and (max-width: $tablet) {} // End Tablet & Below
+
+// Secondary Mobile - Phone & Below
+// @media screen and (max-width: $phone) {} // End Phone & Below
+
+// iPad Only
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {} // End iPad Only
+
+// iPhone Only
+// @media only screen and (max-device-width: 480px) {} // End iPhone Only

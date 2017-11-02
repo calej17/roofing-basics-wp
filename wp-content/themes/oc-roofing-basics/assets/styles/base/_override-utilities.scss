@@ -1,0 +1,6 @@
+.mobile-hide {
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone) {
+    display: none !important;
+  } // End Phone & Below
+}

@@ -1,0 +1,17 @@
+@mixin flash-container($background-color: $brand, $color: $foreground) {
+  @include full-box;
+  background-color: $background-color;
+  color: $color;
+  font-size: 0.8em;
+  padding: $half-space 5%;
+}
+
+.flash {
+  &-container {
+    color: $brand;
+
+    &.error {
+      color: $error;
+    }
+  } // End .flash-container
+} // End .flash

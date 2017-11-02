@@ -1,0 +1,30 @@
+.content {
+  ul, ol {
+    @include full-box;
+    margin-bottom: $minor-space;
+
+    li {
+      display: list-item;
+      font-family: $font-light;
+      line-height: 160%;
+      margin-bottom: $nano-space;
+      margin-left: $minor-space;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal;
+    }
+  }
+} // End .content

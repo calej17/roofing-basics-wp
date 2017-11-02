@@ -1,0 +1,184 @@
+// Curtain
+@mixin curtain($position: fixed) {
+  background-color: rgba(invert($background), 0.9);
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: $position;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+}
+
+// Uncomment to compile style
+// .curtain {
+//   @include curtain;
+// }
+
+// Modal
+@mixin modal {
+  @include horizontal-center;
+  background-color: $background;
+  display: none;
+  max-width: $phone;
+  padding: 60px;
+  top: $double-space;
+  width: 100%;
+  z-index: 10;
+
+  // Secondary Mobile - Phone & Below
+  @media screen and (max-width: $phone) {
+    top: 0;
+  } // End Secondary Mobile
+} // End modal
+
+// Uncomment to compile style
+// .modal {
+//   @include modal;
+// }
+
+// Wrap
+@mixin wrap($width: 90%, $max-width: auto) {
+  @include better-box(block);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $max-width;
+  width: $width;
+} // End wrap
+
+.wrap {
+  @include wrap;
+}
+
+@mixin larger {
+  font-size: 1.125em;
+}
+
+.larger {
+  @include larger;
+}
+
+// Buttons
+@mixin cta($color: $callout, $type-color: $foreground) {
+  @include better-box;
+  background-color: $color;
+  border: 1px solid $color;
+  border-radius: $border-radius;
+  color: $type-color;
+  cursor: pointer;
+  font-family: $font-light;
+  font-size: 1em;
+  letter-spacing: 0.025em;
+  line-height: 140%;
+  padding: 0.875em 1.625em;
+
+  span, svg {
+    @include better-box;
+    float: left;
+  }
+
+  svg {
+    height: 0.9em;
+    margin-left: $nano-space;
+    width: 0.9em;
+
+    & use {
+      fill: none;
+      stroke: $type-color;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+  }
+
+  &.cta-small {
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    margin-bottom: $half-space;
+    padding: 0.655em 1.5em;
+    text-transform: uppercase;
+  }
+
+  &.cta-large {
+    font-size: 1.188em;
+    min-width: 320px;
+    padding: 1.5em 3em;
+  }
+
+  &.icon-cta {
+    svg {
+      @include better-box;
+      height: 1em;
+      display: inline-block;
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      width: 1em;
+
+      &, use {
+        stroke: $foreground;
+        stroke-width: 2.5;
+      }
+    } // End svg
+  } // End &.icon-cta
+
+  &:hover {
+    background-color: $type-color;
+    color: $color;
+
+    svg {
+      & use {
+        fill: $type-color;
+        stroke: $color;
+      }
+    }
+  }
+
+  &.destroy {
+    background-color: $error;
+    border-color: $error;
+
+    &:hover {
+      background-color: $error-hover;
+    }
+  } // End &-destroy
+} // End cta mixin
+
+a.cta {
+  @include cta;
+}
+
+.half {
+  @include better-box;
+  margin-top: 0;
+  width: 47.5%;
+
+  &.left {
+    clear: left;
+    margin-right: 5%;
+  }
+
+  &.right {
+    clear: right;
+  }
+}
+
+// Avatar
+@mixin avatar($background-color: $callout) {
+  @include better-box;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: $background-color;
+  background-size: 45%;
+  border-radius: 100%;
+  height: 3em;
+  width: 3em;
+}
+
+.avatar {
+  @include avatar;
+
+  &-admin {
+    @include avatar($background);
+  }
+}
