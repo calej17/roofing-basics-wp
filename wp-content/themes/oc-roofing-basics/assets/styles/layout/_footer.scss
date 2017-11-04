@@ -1,3 +1,5 @@
 footer {
-  
+  @include full-box;
+  background-color: #CECECE;
+  padding: 2em 0;
 } // End footer

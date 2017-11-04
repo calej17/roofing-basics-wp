@@ -8,6 +8,8 @@ body {
   color: $type;
   font-family: $font-stack;
   font-size: $base;
+  margin: 0 auto;
+  max-width: 1440px;
 
   // Primary Mobile - Tablet & Below
   @media screen and (max-width: $tablet){
@@ -66,9 +68,9 @@ hr {
 }
 
 a {
-  color: $callout;
+  color: $default;
 
   &:hover {
-    color: $callout-hover;
+    // color: $callout-hover;
   }
 }

@@ -9,6 +9,16 @@
   <body <?php body_class(get_post_type($post)); ?>>
     <header>
       <div class="wrap">
-        header
+        <a class="logo" href="/"></a>
+        <nav>
+          <a href="#">Roofing Basics</a>
+          <a href="#">Pick Your Shingles</a>
+          <a href="#">Warrantly</a>
+          <a href="#">Find a Contractor</a>
+          <a href="#">Professional Roofers</a>
+          <form class="search">
+            <input name="search" placeholder="Search" type="text" />
+          </form>
+        </nav>
       </div>
     </header>

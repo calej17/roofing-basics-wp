@@ -57,7 +57,7 @@ $big-phone: 840px;
 $phone: 680px;
 
 // Color
-$background: #0D1B35; // Primary background color
+$background: #FFFFFF;
 $border-color: #E0F1F3;
 $brand: #489ED2;
 $callout: #6fCEC1;
@@ -66,9 +66,9 @@ $default: #000000;
 $error: #C46A5E;
 $error-hover: lighten($error, 2.5%);
 $link: #4a638b;
-$type: #5B626E;
+$type: $default;
 $type-alt: #C1C3C8;
-$foreground: #FFFFFF;
+$foreground: $background;
 $shadow: rgba($background, 0.1);
 
 // Space
@@ -85,7 +85,7 @@ $micro-space: 0.750rem;
 $nano-space: $micro-space / 2;
 
 // Fonts
-$font: "";
+$font: Arial;
 $font-italic: "";
 $font-light: "";
 $font-medium: "";
@@ -98,37 +98,40 @@ $animate-time: 0.2s;
 $border-radius: 0.250em;
 
 // Base Imports
-@import "base/utilities";
-@import "base/resets";
-@import "base/generics";
-@import "base/modbox";
-@import "base/fonts";
+@import "assets/styles/base/utilities";
+@import "assets/styles/base/resets";
+@import "assets/styles/base/generics";
+@import "assets/styles/base/modbox";
+@import "assets/styles/base/fonts";
 
 // 1.0 LAYOUT - Global Structure
 // ----------------------------------------------------------------------------------------------------
-@import "layout/global";
-@import "layout/content";
+@import "assets/styles/layout/global";
+@import "assets/styles/layout/content";
 
 // Header Structure
-@import "layout/header";
-@import "modules/logo";
-@import "modules/menu-button";
-@import "layout/flash";
+@import "assets/styles/layout/header";
+@import "assets/styles/modules/logo";
+@import "assets/styles/modules/menu-button";
+@import "assets/styles/layout/flash";
 
 // Footer Structure
-@import "layout/footer";
+@import "assets/styles/layout/footer";
 
 // Headings
-@import "layout/headings";
+@import "assets/styles/layout/headings";
 
 // Forms
-@import "layout/forms";
+@import "assets/styles/layout/forms";
 
 // 2.0 MODULES - Page Specific
 // ----------------------------------------------------------------------------------------------------
 
 // Override Utilities
-@import "base/override-utilities";
+@import "assets/styles/base/override-utilities";
+
+// Modules
+@import "assets/styles/modules/post-card";
 
 // Print
 // @import "base/print";

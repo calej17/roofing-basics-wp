@@ -1,0 +1,33 @@
+.post-card {
+  @include better-box;
+  border: 1px solid $default;
+  float: left;
+  margin-bottom: 2%;
+  width: 48%;
+
+  &:nth-of-type(odd) {
+    margin-right: 1%;
+  }
+
+  &:nth-of-type(even) {
+    margin-left: 1%;
+  }
+
+  &-image {
+    @include full-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 40%;
+  }
+
+  &-text {
+    @include full-box;
+    padding: 1em;
+
+    h2 {
+      margin: 0;
+      text-transform: uppercase;
+    }
+  } // End &-text
+} // End .post-card
