@@ -7,18 +7,21 @@
     <?php wp_head(); ?>
   </head>
   <body <?php body_class(get_post_type($post)); ?>>
+    <?php get_template_part('shared/svg-sprite'); ?>
     <header>
       <div class="wrap">
-        <a class="logo" href="/"></a>
+        <a class="logo" href="/">
+          <svg><use xlink:href="#logo" /></svg>
+        </a>
         <nav>
           <a href="#">Roofing Basics</a>
           <a href="#">Pick Your Shingles</a>
           <a href="#">Warrantly</a>
           <a href="#">Find a Contractor</a>
           <a href="#">Professional Roofers</a>
-          <form class="search">
-            <input name="search" placeholder="Search" type="text" />
-          </form>
         </nav>
+        <form class="search">
+          <input name="search" placeholder="Search" type="text" />
+        </form>
       </div>
     </header>

@@ -1,10 +1,18 @@
-<?php get_header(); ?>
-<section class="main-content">
-  <div class="wrap">
-    <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-      <h1><?php the_title(); ?></h1>
+<?php
+get_header();
+if ( have_posts() ) while ( have_posts() ) : the_post();
+  $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' ); ?>
+
+  <section class="hero single-post" style="background-image: url('<?php echo $src[0]; ?>')">
+    <h1><?php the_title(); ?></h1>
+  </section>
+  <section class="content single-post">
+    <div class="wrap">
       <?php the_content(); ?>
-    <?php endwhile; ?>
-  </div>
-</section>
-<?php get_footer(); ?>
+    </div>
+  </section>
+
+<?php
+endwhile;
+get_footer();
+?>

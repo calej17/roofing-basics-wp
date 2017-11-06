@@ -1,3 +1,46 @@
 header {
+  @include full-box;
+  padding: 1em;
 
+  .logo {
+    @include better-box;
+    float: left;
+    height: 3em;
+    width: 3em;
+
+    svg, use {
+      display: inline-block;
+      height: 3em;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 3em;
+    }
+  } // End .logo
+
+  nav {
+    @include better-box;
+    float: left;
+
+    a {
+      @include better-box;
+      color: $default;
+      font-family: $font;
+      font-size: 0.875em;
+      line-height: 150%;
+      padding: 1em;
+      text-transform: uppercase;
+    }
+  } // End nav
+
+  form {
+    @include better-box;
+    float: right;
+
+    input[type="text"] {
+      font-size: 0.875em;
+      margin: 0;
+      padding: 1em;
+    }
+  } // End form
 } // End header

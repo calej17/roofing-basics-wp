@@ -1,4 +1,32 @@
 .content {
+  p {
+    font-size: 0.875em;
+  }
+
+  a {
+    color: $callout;
+    text-decoration: underline;
+  }
+
+  img {
+
+
+    &.alignleft {
+      float: left;
+    }
+
+    &.aligncenter {
+      clear: both;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.align-right {
+      float: right;
+    }
+  } // End img
+
   ul, ol {
     @include full-box;
     margin-bottom: $minor-space;
@@ -26,5 +54,13 @@
     li {
       list-style: decimal;
     }
+  }
+
+  strong {
+    font-family: $font-bold;
+  }
+
+  em {
+    font-style: italic;
   }
 } // End .content

@@ -58,6 +58,13 @@
   display: none;
 }
 
+.hide-alt {
+  height: 0;
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+}
+
 // Cloak
 %cloak, .cloak {
   opacity: 0;
