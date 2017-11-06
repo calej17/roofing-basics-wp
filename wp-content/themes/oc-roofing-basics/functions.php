@@ -73,9 +73,9 @@
   add_action('transition_post_status', 'export_new_post', 10, 3);
   function export_new_post($new_status, $old_status, $post) {
     if($new_status === 'publish' && $post->post_type === 'post') {
-      // Put URL to fire static site build here
+      // Put URL to fire static site build here;
+      // Replace test code below
 
-      // 'Working' test code
       // $ch = curl_init('https://mdms-devel.owenscorning.com/api/v1/validzip');
       // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       // $output = curl_exec($ch);
