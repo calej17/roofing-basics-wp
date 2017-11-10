@@ -58,7 +58,13 @@
     echo get_bloginfo('name');
   }
 
-  /* Post Functions */
+  function my_login_logo_url() {
+    return home_url();
+  }
+  add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+
+  /* ----- Post Functions ----- */
 
   // Add Featured Images to Posts
   add_theme_support( 'post-thumbnails' );

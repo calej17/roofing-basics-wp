@@ -44,21 +44,21 @@ p {
   font-size: 0.875em;
 }
 
-strong {
-  font-family: $font-medium;
-
-  em {
-    font-family: $font-bold-italic;
-  }
-}
-
-em {
-  font-family: $font-italic;
-
-  strong {
-    font-family: $font-bold-italic;
-  }
-}
+// strong {
+//   font-family: $font-medium;
+//
+//   em {
+//     font-family: $font-bold-italic;
+//   }
+// }
+//
+// em {
+//   font-family: $font-italic;
+//
+//   strong {
+//     font-family: $font-bold-italic;
+//   }
+// }
 
 hr {
   @include full-box(table);

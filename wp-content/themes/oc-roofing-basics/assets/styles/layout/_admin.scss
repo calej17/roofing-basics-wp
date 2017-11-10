@@ -1,0 +1,8 @@
+#login h1 a, .login h1 a {
+  @include full-box;
+  background-image: url("assets/images/owens-corning-logo.svg");
+  background-position: center center;
+  background-size: contain;
+  height: 8em;
+  margin: 0;
+}
