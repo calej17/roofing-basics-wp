@@ -1,4 +1,7 @@
 .content {
+  @include full-box;
+  margin-bottom: 2em;
+
   p {
     font-size: 0.875em;
   }
@@ -6,20 +9,24 @@
   a {
     color: $callout;
     text-decoration: underline;
-  }
+
+    img {
+      margin: 0;
+    }
+  } // End a
 
   img {
-
+    display: inline-block;
+    margin-bottom: 2em;
+    margin-right: 2em;
 
     &.alignleft {
       float: left;
     }
 
     &.aligncenter {
-      clear: both;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
     }
 
     &.align-right {
@@ -27,40 +34,89 @@
     }
   } // End img
 
+  .wp-caption-text {
+    display: inline-block;
+    font-size: 0.875em;
+    font-style: italic;
+    margin: 0;
+    position: relative;
+    top: -2em;
+  }
+
   ul, ol {
     @include full-box;
-    margin-bottom: $minor-space;
+    // margin-bottom: $minor-space;
+    margin-bottom: 1em;
 
     li {
-      display: list-item;
-      font-family: $font-light;
-      line-height: 160%;
-      margin-bottom: $nano-space;
-      margin-left: $minor-space;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
+      @include full-box;
+      // font-family: $font-light;
+      line-height: 140%;
+      list-style: inside disc;
+      margin-bottom: 0.5em;
+      padding-left: 1em;
     }
-  }
+  } //  End ul, ol
 
   ul {
-    li {
-      list-style: disc;
-    }
-  }
+    > li {
+      &:before {
+        content: "\25cf";
+        font-size: 0.7em;
+        left: 0;
+        position: absolute;
+        top: 0;
+      }
+
+      ul {
+        li {
+          &:before {
+            content: "\2013";
+            font-family: $font;
+          }
+        } // End li
+      } // End ul
+    } // End li
+  } // End ul
 
   ol {
     li {
-      list-style: decimal;
+      @include full-box(list-item);
+      line-height: 140%;
+      list-style: inside decimal;
+      margin-bottom: 0.5em;
     }
   }
 
-  strong {
-    font-family: $font-bold;
+  ul li ul,
+  ol li ol,
+  ul li ol,
+  ol li ul {
+    margin: 0;
+    padding: 0.5em 0;
   }
 
-  em {
-    font-style: italic;
-  }
+  table {
+    display: table;
+    position: relative;
+    margin-bottom: 2em;
+
+    tr {
+      &:nth-child(odd) {
+        background-color: $type-alt;
+      }
+
+      td {
+        padding: 0.25em 0.5em;
+      }
+    } // End tr
+
+    thead {
+      tr {
+        td {
+          font-family: $font-bold;
+        }
+      } // End tr
+    } // End thead
+  } // End table
 } // End .content

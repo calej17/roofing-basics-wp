@@ -1,7 +1,9 @@
 h1, h2, h3, h4, h5 {
   @include full-box;
   color: $default;
+  font-family: $font-bold;
   line-height: 140%;
+  margin-bottom: 1em;
 }
 
 h1 {
@@ -16,17 +18,20 @@ h1 {
 }
 
 h2 {
+  font-family: $font-bold;
   font-size: 2em;
-  font-weight: bold;
-  margin-bottom: $space;
+  // margin-bottom: $space;
 }
 
-h3, h4 {
-  font-size: 1.1875em;
-  margin-bottom: $minor-space;
+h3 {
+  font-size: 1.5em;
+  // margin-bottom: $minor-space;
 }
 
-h4 {
-  color: $type;
-  line-height: 120%;
+// h4 {}
+
+h5 {
+  color: #333333;
+  font-size: 0.875em;
+  font-style: italic;
 }

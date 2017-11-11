@@ -35,10 +35,11 @@ section {
 
 p {
   font-family: $font-light;
-  font-size: 1.188em;
+  font-size: 1em;
   line-height: 160%;
-  margin-bottom: $minor-space;
-} // End p
+  // margin-bottom: $minor-space;
+  margin-bottom: 1em;
+}
 
 .note {
   font-size: 0.875em;
@@ -60,6 +61,19 @@ p {
 //   }
 // }
 
+strong {
+  font-family: $font-bold;
+}
+
+em {
+  font-style: italic;
+}
+
+strong em, em strong {
+  font-family: $font-bold;
+  font-style: italic;
+}
+
 hr {
   @include full-box(table);
   background-color: $border-color;
@@ -68,9 +82,11 @@ hr {
 }
 
 a {
-  color: $default;
+  @include better-box;
+  color: $callout;
+  text-decoration: underline;
 
-  &:hover {
-    // color: $callout-hover;
-  }
-}
+  // &:hover {
+  //   color: $callout-hover;
+  // }
+} // End a
