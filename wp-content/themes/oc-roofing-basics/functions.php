@@ -4,6 +4,7 @@
 
   // Enqueue Styles and Scripts
     if(!is_admin()) {
+
       // Theme Stylesheet
       wp_enqueue_style('theme_style', get_stylesheet_uri(), "", "1.2");
       // Theme Scripts
@@ -75,6 +76,59 @@
     $content = preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
     return $content;
   }
+
+  // Require Featured Image
+  function require_featured_image($post_id) {
+    // Limit affected post type.
+    if (get_post_type($post_id) !== 'post') {
+      return;
+    }
+
+    // Skip Featured Image check when on new post page, or deleting a post.
+    $statuses_to_ignore = array('auto-draft', 'trash');
+    $status = get_post_status($post_id);
+    if (in_array($status, $statuses_to_ignore)) {
+      return;
+    }
+
+    // Save as draft, and fire flash message if Featured Image is missing.
+    if (!has_post_thumbnail($post_id)) {
+      // Set a transient to show the users an admin message.
+      set_transient("has_post_thumbnail", "no");
+      // Unhook this function so it doesn't loop infinitely.
+      remove_action('save_post', 'require_featured_image');
+      // Update the post set it to draft.
+      wp_update_post(array('ID' => $post_id, 'post_status' => 'draft'));
+      add_action('save_post', 'require_featured_image');
+    }
+    else {
+      delete_transient("has_post_thumbnail");
+    }
+  } // End require_featured_image
+  add_action('save_post', 'require_featured_image');
+
+  // Show Required Featured Image flash message when adding / editing posts.
+  function required_featured_image_flash() {
+    if (get_transient("has_post_thumbnail") == "no") {
+      echo "<div id='message' class='error'><p>You must select Featured Image. Your Post is saved but it can not be published.</p></div>";
+      delete_transient("has_post_thumbnail");
+    }
+  } // End required_featured_image_flash
+  add_action('admin_notices', 'required_featured_image_flash');
+
+  // Update "Post Published" messaging if saving as draft.
+  function update_published_messaging($location, $post_id) {
+    if (isset($_POST['publish'])) {
+      $status = get_post_status( $post_id );
+      // The post was 'published', but if it is still a draft, display draft message (10).
+      if( $status == 'draft' ) {
+        $location = add_query_arg('message', 10, $location);
+      }
+    }
+
+    return $location;
+  } // End update_published_messaging
+  add_filter('redirect_post_location', 'update_published_messaging', 10, 2);
 
   // After Post Save Callback to Generate Static Pages
   add_action('transition_post_status', 'export_new_post', 10, 3);
