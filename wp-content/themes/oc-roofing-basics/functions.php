@@ -110,7 +110,7 @@
   // Show Required Featured Image flash message when adding / editing posts.
   function required_featured_image_flash() {
     if (get_transient("has_post_thumbnail") == "no") {
-      echo "<div id='message' class='error'><p>You must select Featured Image. Your Post is saved but it can not be published.</p></div>";
+      echo "<div id='message' class='error'><p>Please select a Featured Image before publishing. Your post has been saved as a draft.</p></div>";
       delete_transient("has_post_thumbnail");
     }
   } // End required_featured_image_flash
