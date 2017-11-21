@@ -59,10 +59,19 @@
     echo get_bloginfo('name');
   }
 
+  // Update Login Page Logo URL
   function my_login_logo_url() {
     return home_url();
   }
   add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+  // Add Okta SSO Login Link to Login Page
+  function add_okta_sso_login() {
+    echo "<div class='custom-login-module'>";
+    echo do_shortcode("[mo_oauth_login]");
+    echo "</div>";
+  }
+  add_filter('login_message', 'add_okta_sso_login');
 
 
   /* ----- Post Functions ----- */

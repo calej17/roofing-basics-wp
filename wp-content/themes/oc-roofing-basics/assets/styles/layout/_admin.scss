@@ -6,3 +6,22 @@
   height: 8em;
   margin: 0;
 }
+
+#login {
+  .custom-login-module {
+    @include full-box;
+    margin-bottom: 2em;
+    text-align: center;
+
+    button {
+      @include better-box;
+      background-color: $callout;
+      color: $background;
+      padding: 0.5em 1em;
+
+      &:hover {
+        background-color: $callout-hover;
+      }
+    } // End button
+  } // End .custom-login-module
+} // End #login
